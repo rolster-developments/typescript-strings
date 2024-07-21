@@ -1,4 +1,4 @@
-import { firstElement, lastElement } from '@rolster/helpers-array';
+import { firstElement, lastElement } from '@rolster/arrays';
 
 export type Interpolators = LiteralObject<any> | any[];
 

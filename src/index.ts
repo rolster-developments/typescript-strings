@@ -2,15 +2,15 @@ import { firstElement, lastElement } from '@rolster/arrays';
 
 export type Interpolators = LiteralObject<any> | any[];
 
-export const firstChar = (value: string): string => {
+export function firstChar(value: string): string {
   return value.length === 0 ? '' : value.charAt(0);
-};
+}
 
-export const lastChar = (value: string): string => {
+export function lastChar(value: string): string {
   return value.length ? value.charAt(value.length - 1) : '';
-};
+}
 
-export const normalize = (word: string): string => {
+export function normalize(word: string): string {
   return word
     .slice()
     .replace(/á/g, 'a')
@@ -23,13 +23,13 @@ export const normalize = (word: string): string => {
     .replace(/Ó/g, 'O')
     .replace(/ú/g, 'u')
     .replace(/Ú/g, 'U');
-};
+}
 
-export const hasPattern = (
+export function hasPattern(
   word: string,
   pattern: string,
   force = false
-): boolean => {
+): boolean {
   let filter = pattern.toLowerCase();
   let test = word.toLowerCase();
 
@@ -39,9 +39,9 @@ export const hasPattern = (
   }
 
   return !!test.match(`^.*${filter}.*$`);
-};
+}
 
-export const initials = (word: string, size = 2): string => {
+export function initials(word: string, size = 2): string {
   const split = word.split(' ');
 
   if (split.length === 1) {
@@ -52,7 +52,7 @@ export const initials = (word: string, size = 2): string => {
   const lastValue = lastElement(split) as string;
 
   return `${firstChar(firstValue)}${firstChar(lastValue)}`.toUpperCase();
-};
+}
 
 const regInterpolation = /{([^{}]*)}/g;
 

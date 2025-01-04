@@ -1,4 +1,4 @@
-import { firstElement, lastElement } from '@rolster/arrays';
+import { first, last } from '@rolster/arrays';
 
 export type Interpolators = LiteralObject<any> | any[];
 
@@ -11,21 +11,10 @@ export function lastChar(value: string): string {
 }
 
 export function normalize(word: string): string {
-  return word
-    .slice()
-    .replace(/á/g, 'a')
-    .replace(/Á/g, 'A')
-    .replace(/é/g, 'e')
-    .replace(/É/g, 'E')
-    .replace(/í/g, 'i')
-    .replace(/Í/g, 'I')
-    .replace(/ó/g, 'o')
-    .replace(/Ó/g, 'O')
-    .replace(/ú/g, 'u')
-    .replace(/Ú/g, 'U');
+  return word.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
-export function hasPattern(
+export function coincidence(
   word: string,
   pattern: string,
   force = false
@@ -34,8 +23,8 @@ export function hasPattern(
   let test = word.toLowerCase();
 
   if (force) {
-    test = normalize(test);
     filter = normalize(filter);
+    test = normalize(test);
   }
 
   return !!test.match(`^.*${filter}.*$`);
@@ -48,20 +37,20 @@ export function initials(word: string, size = 2): string {
     return word.slice(0, size).toUpperCase();
   }
 
-  const firstValue = firstElement(split) as string;
-  const lastValue = lastElement(split) as string;
+  const firstValue = first(split) ?? '';
+  const lastValue = last(split) ?? '';
 
   return `${firstChar(firstValue)}${firstChar(lastValue)}`.toUpperCase();
 }
 
-const regInterpolation = /{([^{}]*)}/g;
+const REGEX_INTERPOLATION = /{([^{}]*)}/g;
 
 export function interpolation(template: string, value?: Interpolators): string {
-  if (value) {
-    return template.replace(regInterpolation, (_, key) =>
-      String(Array.isArray(value) ? value[+key] : value[key])
-    );
-  }
-
-  return !regInterpolation.test(template) ? template : '';
+  return value
+    ? template.replace(REGEX_INTERPOLATION, (_, key) =>
+        String(Array.isArray(value) ? value[+key] : value[key])
+      )
+    : !REGEX_INTERPOLATION.test(template)
+    ? template
+    : '';
 }

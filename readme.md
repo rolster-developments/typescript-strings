@@ -1,11 +1,11 @@
-# Rolster Helpers String
+# Rolster String Utilities
 
 Utility package for manipulating String compatible with Typescript projects.
 
 ## Installation
 
 ```
-npm i @rolster/helpers-string
+npm i @rolster/strings
 ```
 
 ## Configuration

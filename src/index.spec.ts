@@ -1,6 +1,6 @@
 import {
   firstChar,
-  hasPattern,
+  coincidence,
   initials,
   interpolation,
   lastChar,
@@ -25,12 +25,12 @@ describe('Strings', () => {
     expect(normalize('CÓLUMBIA')).toBe('COLUMBIA');
   });
 
-  it('HasPattern', () => {
-    expect(hasPattern('DANIEL CASTILLO', 'CASTI')).toBeTruthy();
-    expect(hasPattern('DANIEL CASTILLO', 'NIAL')).toBeFalsy();
+  it('Coincidence', () => {
+    expect(coincidence('DANIEL CASTILLO', 'CASTI')).toBeTruthy();
+    expect(coincidence('DANIEL CASTILLO', 'NIAL')).toBeFalsy();
 
-    expect(hasPattern('DÁNIÉL CASTILLO', 'ANIE', true)).toBeTruthy();
-    expect(hasPattern('DÁNIÉL CASTILLO', 'NIAL')).toBeFalsy();
+    expect(coincidence('DÁNIÉL CASTILLO', 'ANIE', true)).toBeTruthy();
+    expect(coincidence('DÁNIÉL CASTILLO', 'NIAL')).toBeFalsy();
   });
 
   it('Initials', () => {

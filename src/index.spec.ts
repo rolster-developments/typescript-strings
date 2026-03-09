@@ -7,25 +7,25 @@ import {
   normalize
 } from '.';
 
-describe('Strings', () => {
-  it('FirstChar', () => {
+describe('Strings Helpers', () => {
+  test('should dispatch helper firstChar successful', () => {
     expect(firstChar('Daniel')).toBe('D');
     expect(firstChar('')).toBe('');
   });
 
-  it('LastChar', () => {
+  test('should dispatch helper lastChar successful', () => {
     expect(lastChar('Daniel')).toBe('l');
     expect(lastChar('')).toBe('');
   });
 
-  it('Normalize', () => {
+  test('should dispatch helper normalize successful', () => {
     expect(normalize('COLOMBIA')).toBe('COLOMBIA');
     expect(normalize('Daniel')).toBe('Daniel');
     expect(normalize('Dááníél')).toBe('Daaniel');
     expect(normalize('CÓLUMBIA')).toBe('COLUMBIA');
   });
 
-  it('Coincidence', () => {
+  test('should dispatch helper coincidence successful', () => {
     expect(coincidence('DANIEL CASTILLO', 'CASTI')).toBeTruthy();
     expect(coincidence('DANIEL CASTILLO', 'NIAL')).toBeFalsy();
 
@@ -33,7 +33,7 @@ describe('Strings', () => {
     expect(coincidence('DÁNIÉL CASTILLO', 'NIAL')).toBeFalsy();
   });
 
-  it('Initials', () => {
+  test('should dispatch helper initials successful', () => {
     expect(initials('Daniel Castillo')).toBe('DC');
     expect(initials('Daniel Castillo Pedroza')).toBe('DP');
     expect(initials('Daniel Castillo Pedroza', 3)).toBe('DP');
@@ -42,7 +42,7 @@ describe('Strings', () => {
     expect(initials('Daniel', 3)).toBe('DAN');
   });
 
-  it('Interpolation', () => {
+  test('should dispatch helper interpolation successful', () => {
     const template1 = 'Hello, {person1} and {person2} to Colombia';
     const template2 = 'Thank you, for buy {product}';
     const template3 = 'Winners = {0}, {1} and {2}';

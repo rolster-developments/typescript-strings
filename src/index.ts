@@ -17,12 +17,12 @@ export function normalize(word: string): string {
 export function coincidence(
   word: string,
   pattern: string,
-  force = false
+  normalizeIsRequired = false
 ): boolean {
   let filter = pattern.toLowerCase();
   let test = word.toLowerCase();
 
-  if (force) {
+  if (normalizeIsRequired) {
     filter = normalize(filter);
     test = normalize(test);
   }
@@ -51,6 +51,6 @@ export function interpolation(template: string, value?: Interpolators): string {
         String(Array.isArray(value) ? value[+key] : value[key])
       )
     : !REGEX_INTERPOLATION.test(template)
-    ? template
-    : '';
+      ? template
+      : '';
 }

@@ -1,6 +1,6 @@
 {
   "name": "@rolster/strings",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "type": "module",
   "description": "Utility package for manipulating String compatible with Typescript projects.",
   "license": "MIT",
@@ -11,6 +11,9 @@
       "email": "ing.dacastillop@gmail.com"
     }
   ],
+  "types": "./dist/esm/index.d.ts",
+  "main": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
   "exports": {
     ".": {
       "types": "./dist/esm/index.d.ts",
@@ -32,7 +35,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@rolster/arrays": "^2.3.0"
+    "@rolster/arrays": "^2.3.1"
   },
   "devDependencies": {
     "@rolster/rollup": "^1.0.10",

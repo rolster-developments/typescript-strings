@@ -1,6 +1,6 @@
 {
   "name": "@rolster/strings",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "type": "module",
   "description": "Utility package for manipulating String compatible with Typescript projects.",
   "license": "MIT",
@@ -30,15 +30,15 @@
   "scripts": {
     "prettier": "prettier --write \"src/**/*.{ts}\"",
     "clean": "rimraf ./dist",
-    "build": "npm run clean && tsc -p tsconfig.app.json && rollup -c rollup.config.js",
+    "build": "npm run clean && tsc -p tsconfig.app.json && rollup -c rollup.config.mjs",
     "test": "vitest run",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@rolster/arrays": "^2.3.1"
+    "@rolster/arrays": "^2.4.0"
   },
   "devDependencies": {
-    "@rolster/rollup": "^1.0.10",
+    "@rolster/rollup": "^1.1.0",
     "@rolster/types": "^1.1.0",
     "@vitest/ui": "^3.2.4",
     "jsdom": "^27.0.0",
@@ -61,3 +61,4 @@
     "access": "public"
   }
 }
+

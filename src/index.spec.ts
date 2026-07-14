@@ -1,6 +1,6 @@
 import {
-  firstChar,
   coincidence,
+  firstChar,
   initials,
   interpolation,
   lastChar,

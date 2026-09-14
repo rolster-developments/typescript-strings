@@ -37,8 +37,8 @@ firstChar(''); // ''
 
 ### Normalize accents
 
-`normalize` removes diacritics (accents, tildes) using Unicode normalization,
-which is handy for accent-insensitive comparisons and search.
+`normalize(word)` removes diacritics (accents, tildes) using Unicode
+normalization, which is handy for accent-insensitive comparisons and search.
 
 ```typescript
 import { normalize } from '@rolster/strings';
@@ -49,8 +49,10 @@ normalize('árbol'); // 'arbol'
 
 ### Search coincidence
 
-`coincidence` performs a case-insensitive "contains" check. Set the third
-argument to `true` to also ignore accents.
+`coincidence(word, pattern)` performs a case-insensitive "contains" check. Set
+the third argument to `true` to also ignore accents. The pattern is used as a
+regular expression, so metacharacters such as `.`, `*` or `(` are interpreted,
+not matched literally.
 
 ```typescript
 import { coincidence } from '@rolster/strings';
@@ -76,7 +78,8 @@ initials('Rolster', 3); // 'ROL'
 
 ### Template interpolation
 
-`interpolation` replaces `{...}` placeholders in a template. It accepts an
+`interpolation(template, value?)` replaces `{...}` placeholders in a template.
+The optional `value` is an `Interpolators` (`LiteralObject<any> | any[]`): an
 object (keyed placeholders) or an array (indexed placeholders). When no value
 is provided and the template still has placeholders, it returns `''`.
 

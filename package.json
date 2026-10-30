@@ -39,7 +39,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@rolster/arrays": "^4.0.0"
+    "@rolster/arrays": "^4.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
